@@ -29,8 +29,9 @@ You can try live demos in the following:
 
 An atom represents a piece of state. All you need is to specify an initial
 value, which can be primitive values like strings and numbers, objects and
-arrays. You can create as many primitive atoms as you want.
+arrays. You can create as many primitive atoms as you want. 
 
+Here we have a file atoms.js which contains our example atoms
 ```jsx
 import { atom } from 'jotai'
 
@@ -38,6 +39,8 @@ const countAtom = atom(0)
 const countryAtom = atom('Japan')
 const citiesAtom = atom(['Tokyo', 'Kyoto', 'Osaka'])
 const mangaAtom = atom({ 'Dragon Ball': 1984, 'One Piece': 1997, Naruto: 1999 })
+
+module.exports = { countAtom, countryAtom, citiesAtom, mangaAtom };
 ```
 
 ### Use the atom in your components
@@ -46,6 +49,7 @@ It can be used like `React.useState`:
 
 ```jsx
 import { useAtom } from 'jotai'
+import { countAtom } from './atoms'
 
 function Counter() {
   const [count, setCount] = useAtom(countAtom)
